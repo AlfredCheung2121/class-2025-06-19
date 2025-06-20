@@ -13,7 +13,18 @@ library(tidyverse)
 library(primer.data)
 ```
 
-
+```{r}
+connectedness |> 
+  drop_na() |> 
+  ggplot(aes(x = population)) +
+    geom_histogram(bins = 100) +
+    scale_x_log10(labels = scales::comma_format()) +
+    labs(title = "US County Populations in 2018",
+         subtitle = "Populations are highly skewed",
+         x = "Population",
+         y = "Number of Counties",
+         caption = "Opportunity Insights")
+```
 ```{r}
 ggplot(connectedness, aes(x = population, y = connectedness)) +
   geom_point(color = "black", alpha = 0.7, size = 1.5) +
